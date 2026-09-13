@@ -96,11 +96,25 @@ export default function Home() {
 
         <section className="hero-scene">
           <ParticleField />
-          <span className="hero-word hero-word-left">Krifth</span>
-          <span className="hero-word hero-word-right hero-word-accent">app</span>
+          {/* both wrappers are display:contents on desktop, so the layout there
+              is untouched. on mobile they give the composition its own screen. */}
+          <div className="hero-frame">
+            <div className="hero-stage">
+              <span className="hero-word hero-word-left">Krifth</span>
+              <span className="hero-word hero-word-right hero-word-accent">app</span>
 
-          <div className="hero-model">
-            <img src="/outfit3.png" alt="Person styled with an outfit discovered on Krifth" />
+              <div className="hero-model">
+                {/* intrinsic size reserves the box before the png lands —
+                    without it this element has no height on load */}
+                <img
+                  src="/outfit3.png"
+                  alt="Person styled with an outfit discovered on Krifth"
+                  width={447}
+                  height={525}
+                  fetchPriority="high"
+                />
+              </div>
+            </div>
           </div>
 
           <div className="hero-copy">

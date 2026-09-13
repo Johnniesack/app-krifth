@@ -195,31 +195,39 @@ button {
   position: relative;
   container-type: inline-size;
   container-name: hero;
-  min-height: 760px;
-  padding-top: 14px;
+  min-height: 620px;
+  padding-top: 16px;
+}
+
+/* generate no boxes on desktop — the words and model position against
+   .hero-scene exactly as before. the mobile query gives them real boxes. */
+.hero-frame,
+.hero-stage {
+  display: contents;
 }
 
 .hero-word {
   position: absolute;
-  top: 120px;
+  top: clamp(40px, 8vh, 110px);
   z-index: 0;
   font-family: var(--font-fraunces), Georgia, serif;
-  font-size: clamp(14rem, 17cqw, 15rem);
+  font-size: clamp(8rem, 12vw, 13.5rem);
   font-weight: 600;
-  line-height: 0.9;
-  letter-spacing: -0.02em;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
   font-variant-ligatures: none;
   font-feature-settings: "liga" 0, "dlig" 0, "hlig" 0, "clig" 0, "calt" 0;
   color: var(--text);
   text-transform: lowercase;
+  white-space: nowrap;
 }
 
 .hero-word-left {
-  left: 0;
+  left: clamp(-8px, 0.5vw, 0px);
 }
 
 .hero-word-right {
-  right: 16%;
+  right: clamp(5.5rem, 11vw, 11rem);
 }
 
 .hero-word-accent {
@@ -229,9 +237,9 @@ button {
 .hero-model {
   position: absolute;
   left: 50%;
-  top: 48%;
+  top: 54%;
   z-index: 2;
-  width: min(46cqw, 620px);
+  width: min(40vw, 520px);
   transform: translate(-50%, -50%);
 }
 
@@ -372,6 +380,21 @@ button {
     min-height: 0;
   }
 
+  /* the composition gets a screen to itself so it can breathe */
+  .hero-frame {
+    display: flex;
+    align-items: center;
+    min-height: calc(100svh - 150px);
+  }
+
+  /* hugs the model, so the absolute words stay locked to its head
+     no matter how tall the frame around it gets */
+  .hero-stage {
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+
   .hero-model {
     position: relative;
     left: auto;
@@ -394,12 +417,12 @@ button {
     right: 6%;
   }
 
-  /* copy and download badges drop below the composition */
+  /* copy and download badges become the next screen down, not a squeeze */
   .hero-copy {
     position: static;
     width: 100%;
     max-width: 520px;
-    margin: 4px auto 0;
+    margin: 72px auto 0;
     text-align: center;
   }
 
@@ -410,7 +433,7 @@ button {
   .mini-collection {
     position: static;
     width: min(100%, 340px);
-    margin: 28px auto 0;
+    margin: 40px auto 0;
   }
 }
 
