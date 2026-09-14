@@ -401,18 +401,25 @@ button {
     top: auto;
     /* centred between the two words; sized up so the silhouette fills the
        gap rather than floating in it (the png has transparent side padding) */
-    transform: translate(13%, -6%);
+    /* the subject sits left of centre inside the png, so a centred box
+       reads as off-centre — this nudge centres the person, not the file */
+    transform: translate(4%, -6%);
     width: min(88cqw, 460px);
     margin: 0 auto;
   }
 
   /* the base rule's 14rem floor is desktop-only — it dwarfs the model here */
   .hero-word {
-    font-size: clamp(2rem, 16cqw, 6rem);
+    font-size: clamp(1.5rem, 11.2cqw, 4.4rem);
     top: 0.5em;
   }
 
-  /* pulled in off the edge so it sits against the model, not the margin */
+  /* both words sit on the same gutter so the composition reads balanced —
+     at 16cqw "krifth" ran under the head and lost three letters */
+  .hero-word-left {
+    left: 6%;
+  }
+
   .hero-word-right {
     right: 6%;
   }
