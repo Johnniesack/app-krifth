@@ -278,8 +278,8 @@ button {
 
 .mini-collection {
   position: absolute;
-  right: 0;
-  bottom: 18px;
+  right: 3cqw;
+  bottom: -14px;
   z-index: 3;
   display: flex;
   flex-direction: column;
@@ -401,8 +401,8 @@ button {
     top: auto;
     /* centred between the two words; sized up so the silhouette fills the
        gap rather than floating in it (the png has transparent side padding) */
-    transform: none;
-    width: min(66cqw, 350px);
+    transform: translate(13%, -6%);
+    width: min(88cqw, 460px);
     margin: 0 auto;
   }
 
@@ -560,8 +560,10 @@ button {
     padding-top: 4px;
   }
 
+  /* the png carries transparent side padding, so the silhouette only meets
+     the words once the box is wider than the gap it sits in */
   .hero-model {
-    width: min(54cqw, 240px);
+    width: min(82cqw, 340px);
   }
 
   .hero-copy h1 {
